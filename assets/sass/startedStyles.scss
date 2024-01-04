@@ -10,18 +10,19 @@ body {
     font-style: normal;
     font-weight: $normal;
     color: $black;
-    line-height: 130%;
+    line-height: normal;
+    overflow-x: hidden;
 }
 
 .wrapper {
     max-width: 100vw;
     position: relative;
-    overflow: hidden;
 }
 
 .main {
+    width: 100%;
     min-height: 100vh;
-    background: $white;
+    background: $gray1;
 }
 
 svg, img, video {
@@ -44,9 +45,14 @@ svg, img, video {
 }
 
 a, button {
+    display: inline-block;
     color: inherit;
     background: none;
     transition: .5s;
+}
+
+span {
+    display: inline-block;
 }
 
 a:hover, button:hover {

@@ -1,0 +1,167 @@
+// Weather Styles
+
+.weather {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: $white;
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        align-items: center;
+    }
+
+    &__current {
+        height: 41.625rem;
+    }
+
+    &__details {
+        height: 38.9325rem;
+    }
+}
+
+.current-weather {
+    border-radius: 1.875rem;
+    background: url("../images/weather-bg.png") no-repeat center / cover,
+                linear-gradient(152deg, rgba(136, 235, 239, 0.90) -0.04%, rgba(83, 91, 230, 0.90) 100%);
+    padding: 3rem 2rem 5.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__top,
+    &__bottom {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__week-day {
+        font-size: 2.3125rem;
+        font-weight: $bold;
+        margin-bottom: 1rem;
+    }
+
+    &__date {
+        font-size: 1.375rem;
+        font-weight: $medium;
+        margin-bottom: 1rem;
+    }
+
+    &__address {
+        font-size: 1.25rem;
+        font-weight: $semibold;
+        display: inline-flex;
+        gap: 0.5rem;
+        
+        &::before {
+            font-size: 1.5875rem;
+        }
+    }
+
+    &__icon {
+        margin-bottom: 0.56rem;
+
+        &::before {
+            font-size: 5.9375rem;
+        }
+    }
+
+    &__temperature {
+        font-size: 3.125rem;
+        font-weight: $bold;
+        margin-bottom: 0.81rem;
+    }
+
+    &__status {
+        font-size: 1.875rem;
+        font-weight: $bold;
+    }
+}
+
+.details-weather {
+    padding: 3.44rem 3.13rem 3.88rem 3.44rem;
+    background: $black;
+    border-radius: 0 1.5625rem 1.5625rem 0;
+
+    &__header,
+    &__list {
+        width: 100%;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__header {
+        margin-bottom: 4.94rem;
+    }
+
+    &__list-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__list-item-name {
+        font-size: 1.75rem;
+        font-weight: $bold;
+    }
+
+    &__list-item-value {
+        text-align: right;
+        font-size: 1.75rem;
+        font-weight: $medium;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.06rem;
+        margin-bottom: 4.31rem;
+    }
+
+    &__footer {
+    }
+
+    &__change-btn {
+        @extend %btn;
+    }
+}
+
+.day-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: center;
+    background: $gray2;
+    box-shadow: 1px 2px 4px 0px $gray3;
+    padding: 0.75rem 0 1.25rem;
+    border-radius: 0.625rem;
+
+    &_active {
+        background: $white;
+        color: $darkBlack;
+    }
+
+    &__icon {
+
+        &::before {
+            font-size: 3.375rem;
+        }
+    }
+
+    &__name {
+        font-size: 1.25rem;
+    }
+
+    &__temperature {
+        font-size: 1.25rem;
+        font-weight: $bold;
+    }
+}

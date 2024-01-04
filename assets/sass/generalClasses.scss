@@ -12,3 +12,23 @@
     justify-content: center;
     align-items: center;
 }
+
+// Buttons Classes And Examples
+
+%btn {
+    width: 100%;
+    padding: 0.62rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: $semibold;
+    border-radius: 0.625rem;
+    background: linear-gradient(91deg, rgba(144, 217, 224, 0.90) 0.2%, rgba(84, 96, 230, 0.90) 100%);
+    text-align: center;
+
+    &::before {
+        font-size: 2.0625rem;
+    }
+}
