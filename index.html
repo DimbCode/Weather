@@ -25,6 +25,8 @@
                     <!-- Current Weather -->
 
                     <section class="current-weather weather__current">
+                        
+                        <button class="fa-solid fa-info current-weather__mobile-info-btn"></button>
 
                         <div class="current-weather__top">
 
@@ -71,7 +73,7 @@
                                         PRECIPITATION
                                     </h2>
 
-                                    <span class="details-weather__list-item-value">
+                                    <span class="details-weather__list-item-value details-weather__list-item-value_precipitation">
                                         0%
                                     </span>
                                 </li>
@@ -81,7 +83,7 @@
                                         HUMIDITY
                                     </h2>
                                     
-                                    <span class="details-weather__list-item-value">
+                                    <span class="details-weather__list-item-value details-weather__list-item-value_humidity">
                                         42%
                                     </span>
                                 </li>
@@ -91,7 +93,7 @@
                                         WIND
                                     </h2>
                                     
-                                    <span class="details-weather__list-item-value">
+                                    <span class="details-weather__list-item-value details-weather__list-item-value_wind">
                                         3 km/h
                                     </span>
                                 </li>
@@ -151,9 +153,16 @@
                         </div>
 
                         <footer class="details-weather__footer">
-                            <button class="ic-address details-weather__change-btn">
-                                Change Location
-                            </button>
+                            <div class="details-weather__footer-wrapper">
+                                <button class="ic-address details-weather__change-btn" data-role="change-btn">
+                                    Change Location
+                                </button>
+
+                                <div class="details-weather__input input">
+                                    <input type="text" placeholder="00.0000 00.0000" data-role="search-input" class="input__input">
+                                    <button class="ic-skip input__skip-btn" data-role="skip-btn"></button>          
+                                </div>
+                            </div>
                         </footer>
 
                     </section>
@@ -165,6 +174,14 @@
 
             <!-- Weather End -->
 
+            <!-- Rights -->
+
+            <a href="https://open-meteo.com/" class="rights-text">
+                API, использованное в проекте: https://open-meteo.com/
+            </a>
+
+            <!-- Rights End -->
+
         </main>
 
         <!-- Main End -->
@@ -173,6 +190,22 @@
 
     <!-- Wrapper End -->
 
-<script src="assets/js/index.js"></script>
+<!-- JS Files -->
+
+<script src="assets/js/index.js" type="module"></script>
+
+<!-- JS Files End -->
+
+<!-- JS Modules -->
+
+<script src="assets/js/modules/startValues.js" type="module"></script>
+<script src="assets/js/modules/WeatherQuerie.js" type="module"></script>
+<script src="assets/js/modules/CityTranslate.js" type="module"></script>
+<script src="assets/js/modules/Day.js" type="module"></script>
+<script src="assets/js/modules/Days.js" type="module"></script>
+<script src="assets/js/modules/CurrentInfo.js" type="module"></script>
+<script src="assets/js/modules/ChangeLocation.js" type="module"></script>
+
+<!-- JS Modules End -->
 </body>
 </html>

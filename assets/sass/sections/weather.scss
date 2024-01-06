@@ -30,6 +30,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 
     &__top,
     &__bottom {
@@ -78,6 +79,23 @@
         font-size: 1.875rem;
         font-weight: $bold;
     }
+
+    &__mobile-info-btn {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        align-items: center;
+        justify-content: center;
+        height: 3rem;
+        width: 3rem;
+        border: 2px solid $white;
+        border-radius: 0.625rem;
+        display: none;
+
+        &::before {
+            font-size: 1.5rem;
+        }
+    }
 }
 
 .details-weather {
@@ -124,11 +142,40 @@
         margin-bottom: 4.31rem;
     }
 
-    &__footer {
+    &__footer-wrapper {
+        position: relative;
+        height: 3rem;
     }
 
     &__change-btn {
         @extend %btn;
+    }
+
+    &__input,
+    &__change-btn {
+        height: inherit;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: .5s;
+    }
+
+    &__input {
+        transform: rotateX(90deg);
+        transform-origin: 50% 50% -1.5rem;
+    }
+
+    &__change-btn {
+        transform: rotateX(0);
+        transform-origin: 50% 50% -1.5rem;
+    }
+
+    &__footer-wrapper_open &__input {
+        transform: rotateX(0);
+    }
+
+    &__footer-wrapper_open &__change-btn {
+        transform: rotateX(-90deg);
     }
 }
 
@@ -144,7 +191,7 @@
     padding: 0.75rem 0 1.25rem;
     border-radius: 0.625rem;
 
-    &_active {
+    &:first-child {
         background: $white;
         color: $darkBlack;
     }

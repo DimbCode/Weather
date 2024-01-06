@@ -1,75 +1,41 @@
-// async function fetchApi() {
+// Imports
 
-//     let responses = await fetch("https://api.open-meteo.com/v1/forecast?latitude=44.06&longitude=39.05&hourly=weather_code&start_date=2024-01-04&end_date=2024-01-04");
-//     let response = await responses.json();
+import { CurrentInfo } from "./modules/CurrentInfo.js";
+import { WeatherQuerie } from "./modules/WeatherQuerie.js";
+import { ChangeLocation } from "./modules/ChangeLocation.js";
 
-//     response = response.hourly.weather_code;
+async function showResult(promise) {
 
-//     console.log(response);
+    let result = await promise;
+    console.log(result);
 
-// }
+}
 
-// fetchApi();
+const elements = {
+    days: ".details-weather__content",
+    day: ".current-weather__week-day",
+    date: ".current-weather__date",
+    place: ".current-weather__address",
+    icon: ".current-weather__icon",
+    temperature: ".current-weather__temperature",
+    status: ".current-weather__status",
+    precipitation: ".details-weather__list-item-value_precipitation",
+    humidity: ".details-weather__list-item-value_humidity",
+    wind: ".details-weather__list-item-value_wind",
+}
 
-// class WeatherQuery {
+const currentInfo = new CurrentInfo({
+    elements,
+    cityLat: 44.1053,
+    cityLon: 39.0802,
+});
 
-//     constructor({ uri }) {
-        
-//         // System Props
+const changeLocation = new ChangeLocation({
+    parentElement: ".details-weather__footer-wrapper",
+    openClass: "details-weather__footer-wrapper_open",
+    currentInfo: currentInfo,
+});
 
-//         this._uri = uri;
+currentInfo.setWeather();
 
-//         // Class Elements
-
-//         // this._resElem = document.querySelector(resultElement);
-
-//     }
-
-//     generateFullURI(options) {
-
-//         let resultURI = this._uri + "?";
-//         let optionsEntries = Object.entries(options);
-
-//         optionsEntries.forEach((item, index) => {    
-//             let [key, value] = item;
-
-//             if (index === 0) {
-//                 resultURI += `${key}=${value}`;
-//             }   else {
-//                 resultURI += `&${key}=${value}`;
-//             }
-//         });
-
-//         return resultURI;
-
-//     }
-
-//     async query(options) {
-
-//         let response = await fetch(this.generateFullURI(options));
-//         let jsonResponse = await response.json();
-
-//         return jsonResponse.hourly;
-
-//     }
-
-// }
-
-// const weather = new WeatherQuery({ uri: "https://api.open-meteo.com/v1/forecast" });
-
-// async function showResult(promise) {
-
-//     let result = await promise;
-//     console.log(result);
-
-// }
-
-// let options = {
-//     latitude: "44.06",
-//     longitude: "39.05",
-//     hourly: "weather_code",
-//     start_date: "2024-01-04",
-//     end_date: "2024-01-04",
-// }
-
-// showResult(weather.query(options));
+console.log(localStorage.getItem("query-count"));
