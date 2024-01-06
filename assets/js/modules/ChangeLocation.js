@@ -20,7 +20,7 @@ export class ChangeLocation {
         this._openClass = openClass;
         this._lat;
         this._lon;
-        this._regexp = /^\d\d\.\d\d\d\d \d\d\.\d\d\d\d$/i
+        this._regexp = /^\d{2,3}\.\d\d\d\d \d{2,3}\.\d\d\d\d$/i
 
         // Start Settings
 

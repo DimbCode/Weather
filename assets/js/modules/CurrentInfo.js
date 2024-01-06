@@ -105,35 +105,46 @@ export class CurrentInfo {
 
     async setElementsValues() {
 
-        // Loading Start
+        try {
 
-        this._isReady = false;
-        this.loadingStart();
+            // Loading Start
 
-        await this._weather.setDataCurrent();
+            this._isReady = false;
+            this.loadingStart();
 
-        const formatedDate = `${this._currentDate.getDate()} ${this.getMonth(this._currentDate)} ${this._currentDate.getFullYear()}`;
-        const iconClasses = `current-weather__icon ${this._weather.getCurrentWeatherIcon()}`;
+            await this._weather.setDataCurrent();
 
-        this.elementOutput(this._dayElement, this.getDay(this._currentDate));
-        this.elementOutput(this._dateElement, formatedDate);
-        this.elementOutput(this._placeElement, await this.setCity());
-        this.elementOutput(this._temperatureElement, `${this._weather.getCurrentWeatherTemp()} °C`);
-        this.elementOutput(this._statusElement, this._weather.getCurrentWeatherStatus());
-        this.elementOutput(this._precipitationElement, `${this._weather.getCurrentWeatherPrecipitation()}%`);
-        this.elementOutput(this._humidityElement, `${this._weather.getCurrentWeatherHumadity()}%`);
-        this.elementOutput(this._windElement, `${this._weather.getCurrentWeatherWindSpeed()} миль/ч.`);
+            const formatedDate = `${this._currentDate.getDate()} ${this.getMonth(this._currentDate)} ${this._currentDate.getFullYear()}`;
+            const iconClasses = `current-weather__icon ${this._weather.getCurrentWeatherIcon()}`;
 
-        document.querySelector(this._iconElement).className = iconClasses;
+            this.elementOutput(this._dayElement, this.getDay(this._currentDate));
+            this.elementOutput(this._dateElement, formatedDate);
+            this.elementOutput(this._placeElement, await this.setCity());
+            this.elementOutput(this._temperatureElement, `${this._weather.getCurrentWeatherTemp()} °C`);
+            this.elementOutput(this._statusElement, this._weather.getCurrentWeatherStatus());
+            this.elementOutput(this._precipitationElement, `${this._weather.getCurrentWeatherPrecipitation()}%`);
+            this.elementOutput(this._humidityElement, `${this._weather.getCurrentWeatherHumadity()}%`);
+            this.elementOutput(this._windElement, `${this._weather.getCurrentWeatherWindSpeed()} миль/ч.`);
 
-        this._days.weather = this._weather;
-        
-        await this._days.output();
+            document.querySelector(this._iconElement).className = iconClasses;
 
-        // Loading End
+            this._days.weather = this._weather;
+            
+            await this._days.output();
 
-        this.loadingEnd();
-        this._isReady = true;
+            // Loading End
+
+            this.loadingEnd();
+            this._isReady = true;
+
+        }   catch {
+            alert("Введены неверные координаты или превышено время ожидания запроса");
+
+            // Loading End
+            
+            this.loadingEnd();
+            this._isReady = true;
+        }
         
     }
 
