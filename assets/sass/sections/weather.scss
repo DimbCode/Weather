@@ -122,6 +122,9 @@
     background: $black;
     border-radius: 0 1.5625rem 1.5625rem 0;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     ::-webkit-scrollbar {
         height: 10px;
@@ -165,13 +168,14 @@
 
     &__content {
         margin-bottom: 4.31rem;
-        overflow: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
     }
 
     &__content-wrapper {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: 10.5625rem;
+        grid-template-rows: 10.1625rem;
         gap: 0.06rem;
     }
 
