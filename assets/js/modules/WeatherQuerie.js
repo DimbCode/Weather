@@ -215,14 +215,18 @@ export class WeatherQuerie {
     // Independent ( at time ) Methods
 
     async setDataDate(date) {
-        let options = {
-            hourly: "temperature_2m weather_code",
-            start_date: date,
-            end_date: date, 
-        }
-        let response = await this.querie(options);
+        try {
+            let options = {
+                hourly: "temperature_2m weather_code",
+                start_date: date,
+                end_date: date, 
+            }
+            let response = await this.querie(options);
 
-        this._dataDate = response;
+            this._dataDate = response;
+        }   catch {
+            throw new Error("Ошибка ответа запроса");
+        }
     }
 
     getWeatherCode() {
@@ -259,12 +263,16 @@ export class WeatherQuerie {
     // Current Time Methods
 
     async setDataCurrent() {
-        let options = {
-            current: "temperature_2m weather_code precipitation relative_humidity_2m wind_speed_10m",
-        }
-        let response = await this.querie(options);
+        try {
+            let options = {
+                current: "temperature_2m weather_code precipitation relative_humidity_2m wind_speed_10m",
+            }
+            let response = await this.querie(options);
 
-        this._dataCurrent = response;
+            this._dataCurrent = response;
+        }   catch {
+            throw new Error("Ошибка ответа запроса");
+        }
     }
 
     getCurrentWeatherTemp() {
