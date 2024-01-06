@@ -54,6 +54,8 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 0;
 
     &__input {
         height: 100%;
@@ -69,15 +71,25 @@
     &__skip-btn {
         height: 100%;
         padding: 0 0.5rem;
-        border-left: 2px solid $gray1;
+        border-left: 2px solid $darkBlack;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         vertical-align: middle;
 
         &::before {
-            color: $black;
+            color: $darkBlack;
             font-size: 2rem;
+            transition: .5s;
+        }
+
+        &:hover {
+            background: $darkBlack;
+            opacity: 1;
+        }
+
+        &:hover::before {
+            color: $white;
         }
     }
 }

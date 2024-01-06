@@ -13,24 +13,35 @@ export class CityTranslate {
     // Methods
 
     async query({ lat, lon }) {
-        let response = await fetch(this._url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": "Token " + this._apiKey,
-            },
-            body: JSON.stringify({
-                lat: lat,
-                lon: lon,
-            }),
-        });
+        let resultStr;
 
-        let jsonResponse = await response.json();
-        localStorage.setItem("query-count", +localStorage.getItem("query-count") + 1);
-        let [area, city] = (jsonResponse.suggestions[0].value).split(", ");
+        try {
+            let response = await fetch(this._url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "Authorization": "Token " + this._apiKey,
+                },
+                body: JSON.stringify({
+                    lat: lat,
+                    lon: lon,
+                }),
+            });
 
-        return `${area}, ${city}`;
+            let jsonResponse = await response.json();
+
+            let [area, city] = (jsonResponse.suggestions[0].value).split(", ");
+            resultStr = `${area}, ${city}`;
+        }   catch {
+            resultStr = `Не определен`;
+            alert("Невозможно определить запрашиваемый город.");
+        }   finally {
+            localStorage.setItem("query-count", +localStorage.getItem("query-count") + 1);
+        }
+        
+
+        return resultStr;
     }
 
 }

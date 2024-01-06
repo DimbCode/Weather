@@ -20,6 +20,7 @@ export class ChangeLocation {
         this._openClass = openClass;
         this._lat;
         this._lon;
+        this._regexp = /^\d\d\.\d\d\d\d \d\d\.\d\d\d\d$/i
 
         // Start Settings
 
@@ -51,9 +52,17 @@ export class ChangeLocation {
         });
 
         this._input.addEventListener("change", (event) => {
-            [this._lat, this._lon] = event.currentTarget.value.split(" ");
+            const input = event.currentTarget;
+            const inputValue = input.value.trim();
+
+            if (this._regexp.test(inputValue)) {
+                [this._lat, this._lon] = inputValue.split(" ");
+                this.setCity();
+            }   else {
+                alert("Введен неправильный шаблон координат.\nПример: xx.xxxx xx.xxxx")
+            }
             
-            this.setCity();
+            input.blur();
         });
     }
 

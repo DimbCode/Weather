@@ -87,8 +87,6 @@ export class CurrentInfo {
         if (this._isReady) {
             this._lat = cityLat;
             this._lon = cityLon;
-            
-            await this.setCity();
 
             this._weather = new WeatherQuerie({
                 url: "https://api.open-meteo.com/v1/forecast",
