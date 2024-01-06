@@ -113,16 +113,16 @@ export class CurrentInfo {
         await this._weather.setDataCurrent();
 
         const formatedDate = `${this._currentDate.getDate()} ${this.getMonth(this._currentDate)} ${this._currentDate.getFullYear()}`;
-        const iconClasses = `current-weather__icon ${await this._weather.getCurrentWeatherIcon()}`;
+        const iconClasses = `current-weather__icon ${this._weather.getCurrentWeatherIcon()}`;
 
         this.elementOutput(this._dayElement, this.getDay(this._currentDate));
         this.elementOutput(this._dateElement, formatedDate);
         this.elementOutput(this._placeElement, await this.setCity());
-        this.elementOutput(this._temperatureElement, `${await this._weather.getCurrentWeatherTemp()} °C`);
-        this.elementOutput(this._statusElement, await this._weather.getCurrentWeatherStatus());
-        this.elementOutput(this._precipitationElement, `${await this._weather.getCurrentWeatherPrecipitation()}%`);
-        this.elementOutput(this._humidityElement, `${await this._weather.getCurrentWeatherHumadity()}%`);
-        this.elementOutput(this._windElement, `${await this._weather.getCurrentWeatherWindSpeed()} km/h`);
+        this.elementOutput(this._temperatureElement, `${this._weather.getCurrentWeatherTemp()} °C`);
+        this.elementOutput(this._statusElement, this._weather.getCurrentWeatherStatus());
+        this.elementOutput(this._precipitationElement, `${this._weather.getCurrentWeatherPrecipitation()}%`);
+        this.elementOutput(this._humidityElement, `${this._weather.getCurrentWeatherHumadity()}%`);
+        this.elementOutput(this._windElement, `${this._weather.getCurrentWeatherWindSpeed()} миль/ч.`);
 
         document.querySelector(this._iconElement).className = iconClasses;
 

@@ -13,16 +13,19 @@
     align-items: center;
 }
 
-.rights-text {
+.rights-block {
     width: calc(100% - 2rem);
     text-align: center;
     position: absolute;
     bottom: 1rem;
     left: 50%;
     transform: translate(-50%, 0);
-    color: $white;
-    text-decoration: underline;
-    font-size: 0.65rem;
+
+    &__text {
+        color: $white;
+        text-decoration: underline;
+        font-size: 0.65rem;
+    }
 }
 
 // Buttons Classes And Examples

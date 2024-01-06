@@ -56,6 +56,7 @@ export class WeatherQuerie {
         let jsonResponse = await response.json();
 
         localStorage.setItem("query-count", +localStorage.getItem("query-count") + 1);
+        console.log(localStorage.getItem("query-count"));
 
         return jsonResponse;
     }
@@ -224,7 +225,7 @@ export class WeatherQuerie {
         this._dataDate = response;
     }
 
-    async getWeatherCode() {
+    getWeatherCode() {
         let codes = this._dataDate.hourly.weather_code;
 
         codes = codes.map(item => {
@@ -245,13 +246,13 @@ export class WeatherQuerie {
         return maxValue[0];
     }
 
-    async getWeatherIconDate() {
-        let code = await this.getWeatherCode();
+    getWeatherIconDate() {
+        let code = this.getWeatherCode();
 
         return this.getWeatherIcon(code);
     }
 
-    async getWeatherTemp() {
+    getWeatherTemp() {
         return this._dataDate.hourly.temperature_2m[14];
     }
 
@@ -266,27 +267,27 @@ export class WeatherQuerie {
         this._dataCurrent = response;
     }
 
-    async getCurrentWeatherTemp() {
+    getCurrentWeatherTemp() {
         return this._dataCurrent.current.temperature_2m;
     }
 
-    async getCurrentWeatherStatus() {
+    getCurrentWeatherStatus() {
         return this.getWeatherName(this._dataCurrent.current.weather_code);
     }
 
-    async getCurrentWeatherIcon() {
+    getCurrentWeatherIcon() {
         return this.getWeatherIcon(this._dataCurrent.current.weather_code);
     }
 
-    async getCurrentWeatherPrecipitation() {
+    getCurrentWeatherPrecipitation() {
         return this._dataCurrent.current.precipitation;
     }
 
-    async getCurrentWeatherHumadity() {
+    getCurrentWeatherHumadity() {
         return this._dataCurrent.current.relative_humidity_2m;
     }
 
-    async getCurrentWeatherWindSpeed() {
+    getCurrentWeatherWindSpeed() {
         return this._dataCurrent.current.wind_speed_10m;
     }
 

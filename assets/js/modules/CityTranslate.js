@@ -38,6 +38,7 @@ export class CityTranslate {
             alert("Невозможно определить запрашиваемый город.");
         }   finally {
             localStorage.setItem("query-count", +localStorage.getItem("query-count") + 1);
+            console.log(localStorage.getItem("query-count"));
         }
         
 

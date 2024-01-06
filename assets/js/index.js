@@ -39,5 +39,3 @@ const changeLocation = new ChangeLocation({
 });
 
 currentInfo.setWeather();
-
-console.log(localStorage.getItem("query-count"));

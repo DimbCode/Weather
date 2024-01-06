@@ -50,8 +50,8 @@ export class Days {
 
             await this._weather.setDataDate(formatedDate);
 
-            let icon = await this._weather.getWeatherIconDate();
-            let temperature = await this._weather.getWeatherTemp();
+            let icon = this._weather.getWeatherIconDate();
+            let temperature = this._weather.getWeatherTemp();
             
             let day = new Day({ date: weekday, icon: icon, temperature: temperature });
 
