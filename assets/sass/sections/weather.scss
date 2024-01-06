@@ -25,7 +25,7 @@
 // Current Weather Styles
 
 .current-weather {
-    overflow: hidden;
+    overflow: auto;
     border-radius: 1.875rem;
     background: url("../images/weather-bg.png") no-repeat center / cover,
                 linear-gradient(152deg, rgba(136, 235, 239, 0.90) -0.04%, rgba(83, 91, 230, 0.90) 100%);
@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 2rem;
     position: relative;
 
     &__top,
@@ -116,7 +117,7 @@
 // Details Weather Styles
 
 .details-weather {
-    overflow: hidden;
+    overflow: auto;
     padding: 3.44rem 3.13rem 3.88rem 3.44rem;
     background: $black;
     border-radius: 0 1.5625rem 1.5625rem 0;
@@ -323,6 +324,7 @@
     }
 
     .current-weather {
+        box-shadow: 0 0 1rem rgba(83, 91, 230, 0.90);
 
         &__mobile-info-btn {
             display: inline-flex;
@@ -335,6 +337,7 @@
     }
 
     .details-weather {
+        box-shadow: 0 0 1rem $gray3;
         border-radius: 1.5625rem;
 
         &__mobile-skip-btn {
