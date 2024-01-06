@@ -68,8 +68,14 @@ export class WeatherQuerie {
         let resultIcon;
         let icons = {
             "ic-sun": [0, 1],
-            "ic-cloud-sun": [2, 3, 45, 48, 51, 53, 55],
-            "ic-cloud-rain": [56, 57, 61, 63, 65, 66, 67, 71, 73, 75, 77, 80, 81, 82, 85, 86, 95, 96, 99],
+            "fa-solid fa-smog": [45, 48, 51, 53, 55],
+            "fa-solid fa-cloud-meatball": [56, 57, 66, 67, 77, 85, 86],
+            "fa-regular fa-snowflake": [71, 73, 75],
+            "ic-cloud-sun": [2],
+            "fa-solid fa-cloud": [3],
+            "ic-cloud-rain": [61, 63, 65, 80, 81],
+            "fa-solid fa-cloud-bolt": [95, 96, 99],
+            "fa-solid fa-cloud-showers-water": [82],
         }
 
         for (let key in icons) {
@@ -89,119 +95,115 @@ export class WeatherQuerie {
         switch (code) {
 
             case 0:
-                resultStr = "Clear Cloud";
+                resultStr = "Чистое небо";
                 break;
 
                 case 1:
-                resultStr = "Mainly clear";
+                resultStr = "Преимущественно ясно";
                 break;
 
                 case 2:
-                resultStr = "Partly cloudy";
+                resultStr = "Переменная облачность";
                 break;
 
                 case 3:
-                resultStr = "Overcast";
+                resultStr = "Пасмурно";
                 break;
 
                 case 45:
-                resultStr = "Fog";
+                resultStr = "Туман";
                 break;
 
                 case 48:
-                resultStr = "Depositing rime fog";
+                resultStr = "Отложение инейного тумана";
                 break;
 
                 case 51:
-                resultStr = "Drizzle: Light";
+                resultStr = "Слабая морось";
                 break;
 
                 case 53:
-                resultStr = "Drizzle: Moderate";
+                resultStr = "Умеренная морось";
                 break;
 
                 case 55:
-                resultStr = "Drizzle: Light";
+                resultStr = "Плотная морось";
                 break;
 
                 case 56:
-                resultStr = "Freezing Drizzle: Light";
+                resultStr = "Легкий ледяной дождь";
                 break;
 
                 case 57:
-                resultStr = "Freezing Drizzle: Dense";
+                resultStr = "Плотный ледяной дождь";
                 break;
 
                 case 61:
-                resultStr = "Rain: Slight";
+                resultStr = "Слабый дождь";
                 break;
 
                 case 63:
-                resultStr = "Rain: Moderate";
+                resultStr = "Дождь";
                 break;
 
                 case 65:
-                resultStr = "Rain: Heavy";
+                resultStr = "Сильный дождь";
                 break;
 
                 case 66:
-                resultStr = "Freezing Rain: Light";
+                resultStr = "Легкий ледяной дождь";
                 break;
 
                 case 67:
-                resultStr = "Freezing Rain: Heavy";
+                resultStr = "Плотный ледяной дождь";
                 break;
 
                 case 71:
-                resultStr = "Snow fall: Slight";
+                resultStr = "Слабый снегопад";
                 break;
 
                 case 73:
-                resultStr = "Snow fall: Moderate";
+                resultStr = "Снегопад";
                 break;
 
                 case 75:
-                resultStr = "Snow fall: Heavy";
-                break;
-
-                case 48:
-                resultStr = "Depositing rime fog";
+                resultStr = "Сильный снегопад";
                 break;
 
                 case 77:
-                resultStr = "Snow grains";
+                resultStr = "Снежные зерна";
                 break;
 
                 case 80:
-                resultStr = "Rain showers: Slight";
+                resultStr = "Слабый ливень";
                 break;
 
                 case 81:
-                resultStr = "Rain showers: Moderate";
+                resultStr = "Ливень";
                 break;
 
                 case 82:
-                resultStr = "Rain showers: Violent";
+                resultStr = "Сильный ливень";
                 break;
 
                 case 85:
-                resultStr = "Snow showers: Slight";
+                resultStr = "Слабый снежный ливень";
                 break;
 
                 case 86:
-                resultStr = "Snow showers: Heavy";
+                resultStr = "Сильный снежный ливень";
                 break;
 
                 case 95:
-                resultStr = "Thunderstorm: Slight or Moderate";
+                resultStr = "Гроза";
                 break;
 
                 case 96:
-                resultStr = "Thunderstorm with slight and heavy hail";
+                resultStr = "Гроза с градом";
                 break;
 
                 case 99:
-                resultStr = "Thunderstorm with slight and heavy hail";
+                resultStr = "Гроза с градом";
                 break;
 
         }

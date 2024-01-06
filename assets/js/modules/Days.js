@@ -83,31 +83,31 @@ export class Days {
         switch (trueDate) {
 
             case 1:
-                textDate = "Monday";
+                textDate = "Пн.";
                 break;
 
                 case 2:
-                textDate = "Tuesday";
+                textDate = "Вт.";
                 break;
 
                 case 3:
-                textDate = "Wednesday";
+                textDate = "Ср.";
                 break;
 
                 case 4:
-                textDate = "Thursday";
+                textDate = "Чт.";
                 break;
 
                 case 5:
-                textDate = "Friday";
+                textDate = "Пт.";
                 break;
 
                 case 6:
-                textDate = "Saturday";
+                textDate = "Сб.";
                 break;
 
                 case 0:
-                textDate = "Sunday";
+                textDate = "Вс.";
                 break;
 
         }

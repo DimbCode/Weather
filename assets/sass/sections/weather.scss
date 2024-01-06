@@ -23,6 +23,7 @@
 }
 
 .current-weather {
+    overflow: hidden;
     border-radius: 1.875rem;
     background: url("../images/weather-bg.png") no-repeat center / cover,
                 linear-gradient(152deg, rgba(136, 235, 239, 0.90) -0.04%, rgba(83, 91, 230, 0.90) 100%);
@@ -63,6 +64,7 @@
 
     &__icon {
         margin-bottom: 0.56rem;
+        display: inline-block;
 
         &::before {
             font-size: 5.9375rem;
@@ -91,6 +93,7 @@
         border: 2px solid $white;
         border-radius: 0.625rem;
         display: none;
+        z-index: 2;
 
         &::before {
             font-size: 1.5rem;
@@ -99,9 +102,20 @@
 }
 
 .details-weather {
+    overflow: hidden;
     padding: 3.44rem 3.13rem 3.88rem 3.44rem;
     background: $black;
     border-radius: 0 1.5625rem 1.5625rem 0;
+    position: relative;
+
+    ::-webkit-scrollbar {
+        height: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background-color: $white;
+        border-radius: 1rem;
+    }
 
     &__header,
     &__list {
@@ -136,10 +150,15 @@
     }
 
     &__content {
+        margin-bottom: 4.31rem;
+        overflow: auto;
+    }
+
+    &__content-wrapper {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 10.5625rem;
         gap: 0.06rem;
-        margin-bottom: 4.31rem;
     }
 
     &__footer-wrapper {
@@ -177,6 +196,20 @@
     &__footer-wrapper_open &__change-btn {
         transform: rotateX(-90deg);
     }
+
+    &__mobile-skip-btn {
+        position: absolute;
+        top: 1rem;
+        right: 3.13rem;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        display: none;
+
+        &::before {
+            font-size: 1.6rem;
+        }
+    }
 }
 
 .day-item {
@@ -188,7 +221,7 @@
     text-align: center;
     background: $gray2;
     box-shadow: 1px 2px 4px 0px $gray3;
-    padding: 0.75rem 0 1.25rem;
+    padding: 0.75rem 1rem 1.25rem;
     border-radius: 0.625rem;
 
     &:first-child {
@@ -197,6 +230,10 @@
     }
 
     &__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
 
         &::before {
             font-size: 3.375rem;
@@ -205,10 +242,226 @@
 
     &__name {
         font-size: 1.25rem;
+        white-space: nowrap;
     }
 
     &__temperature {
         font-size: 1.25rem;
         font-weight: $bold;
+        white-space: nowrap;
     }
+}
+
+// Media Queries
+
+// Media 1000px
+
+@media all and (max-width: 1000px) {
+
+    .weather {
+
+        &__container {
+            height: 100svh;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        &__current,
+        &__details {
+            position: absolute;
+            max-height: 80svh;
+            max-width: 30rem;
+            width: calc(100% - 2rem);
+            transition: .5s;
+        }
+
+        &__current {
+            transform-origin: 50% 50% 31svh;
+            transform: rotateY(0);
+        }
+
+        &__details {
+            transform-origin: 50% 50% 31svh;
+            transform: rotateY(-90deg);
+        }
+
+        &__container_open &__current {
+            transform: rotateY(90deg);
+        }
+
+        &__container_open &__details {
+            transform: rotateY(0deg);
+        }
+    }
+
+    .current-weather {
+
+        &__mobile-info-btn {
+            display: inline-flex;
+        }
+
+        &__top,
+        &__bottom {
+            max-width: calc(100% - 3.5rem);
+        }
+    }
+
+    .details-weather {
+        border-radius: 1.5625rem;
+
+        &__mobile-skip-btn {
+            display: inline-flex;
+        }
+    }
+
+}
+
+// Media 500px
+
+@media all and (max-width: 500px) {
+
+    .weather {
+
+        &__current,
+        &__details {
+            max-height: 75svh;
+        }
+
+        &__current {
+            transform-origin: 50%;
+            transform: rotateY(0);
+        }
+
+        &__details {
+            transform-origin: 50%;
+            transform: rotateY(-90deg);
+        }
+    }
+
+    .details-weather {
+        padding: 4rem 1.5rem 1.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__list-item-name,
+        &__list-item-value {
+            font-size: 1.25rem;
+        }
+
+        &__list {
+            gap: 0.5rem;
+        }
+
+        &__change-btn {
+            font-size: 1rem;
+
+            &::before {
+                font-size: 1.25rem;
+            }
+        }
+
+        // &__header,
+        // &__content {
+        //     margin-bottom: 2.5rem;
+        // }
+
+        &__header,
+        &__content {
+            margin-bottom: 0;
+        }
+
+        &__mobile-skip-btn {
+            right: 1.5rem;
+
+            &::before {
+                font-size: 1.5rem;
+            }
+        }
+
+        &__content-wrapper {
+            grid-template-rows: 8.5625rem;
+        }
+    }
+
+    .current-weather {
+        padding: 2rem;
+
+        &__top,
+        &__bottom {
+            max-width: calc(100% - 3rem);
+        }
+
+        &__mobile-info-btn {
+            width: 2.5rem;
+            height: 2.5rem;
+
+            &::before {
+                font-size: 1.25rem;
+            }
+        }
+
+        &__week-day {
+            font-size: 1.5rem;
+        }
+
+        &__date {
+            font-size: 1rem;
+        }
+
+        &__address {
+            font-size: 1rem;
+            
+            &::before {
+                font-size: 1.25rem;
+            }
+        }
+
+        &__icon {
+
+            &::before {
+                font-size: 4rem;
+            }
+        }
+
+        &__temperature {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        &__status {
+            font-size: 1.5rem;
+        }
+    }
+
+    .day-item {
+
+        &__name,
+        &__temperature {
+            font-size: 1rem;
+        }
+
+        &__icon {
+
+            &::before {
+                font-size: 2rem;
+            }
+        }
+    }
+
+}
+
+// Media 500px
+
+@media all and (max-width: 400px) {
+
+    .current-weather {
+        padding: 2rem 1.5rem;
+
+        &__mobile-info-btn {
+            right: 1.5rem;
+        }
+    }
+
 }

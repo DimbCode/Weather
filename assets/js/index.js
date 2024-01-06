@@ -12,7 +12,7 @@ async function showResult(promise) {
 }
 
 const elements = {
-    days: ".details-weather__content",
+    days: ".details-weather__content-wrapper",
     day: ".current-weather__week-day",
     date: ".current-weather__date",
     place: ".current-weather__address",
@@ -22,12 +22,14 @@ const elements = {
     precipitation: ".details-weather__list-item-value_precipitation",
     humidity: ".details-weather__list-item-value_humidity",
     wind: ".details-weather__list-item-value_wind",
+    container: ".weather__container",
 }
 
 const currentInfo = new CurrentInfo({
     elements,
     cityLat: 44.1053,
     cityLon: 39.0802,
+    openClass: "weather__container_open",
 });
 
 const changeLocation = new ChangeLocation({

@@ -25,8 +25,14 @@
                     <!-- Current Weather -->
 
                     <section class="current-weather weather__current">
+
+                        <!-- Loading Item -->
+
+                        <div class="fa-solid fa-gear loading details-weather__loading loading loading_hidden" data-role="loading"></div>
+
+                        <!-- Loading Item End -->
                         
-                        <button class="fa-solid fa-info current-weather__mobile-info-btn"></button>
+                        <button class="fa-solid fa-info current-weather__mobile-info-btn" data-role="open-btn"></button>
 
                         <div class="current-weather__top">
 
@@ -66,11 +72,19 @@
 
                     <section class="details-weather weather__details">
 
+                        <!-- Loading Item -->
+
+                        <div class="fa-solid fa-gear loading details-weather__loading loading loading_hidden" data-role="loading"></div>
+
+                        <!-- Loading Item End -->
+
+                        <button class="fa-solid fa-arrow-left-long details-weather__mobile-skip-btn" data-role="skip-btn"></button>
+
                         <header class="details-weather__header">
                             <ul class="details-weather__list">
                                 <li class="details-weather__list-item">
                                     <h2 class="details-weather__list-item-name">
-                                        PRECIPITATION
+                                        Вер. осадков
                                     </h2>
 
                                     <span class="details-weather__list-item-value details-weather__list-item-value_precipitation">
@@ -80,7 +94,7 @@
 
                                 <li class="details-weather__list-item">
                                     <h2 class="details-weather__list-item-name">
-                                        HUMIDITY
+                                        Влажность
                                     </h2>
                                     
                                     <span class="details-weather__list-item-value details-weather__list-item-value_humidity">
@@ -90,7 +104,7 @@
                                 
                                 <li class="details-weather__list-item">
                                     <h2 class="details-weather__list-item-name">
-                                        WIND
+                                        Ветер
                                     </h2>
                                     
                                     <span class="details-weather__list-item-value details-weather__list-item-value_wind">
@@ -102,52 +116,56 @@
 
                         <div class="details-weather__content">
 
-                            <div class="day-item day-item_active">
-                                <i class="ic-sun day-item__icon"></i>
+                            <div class="details-weather__content-wrapper">
 
-                                <span class="day-item__name">
-                                    Tue
-                                </span>
+                                <div class="day-item day-item_active">
+                                    <i class="ic-sun day-item__icon"></i>
 
-                                <strong class="day-item__temperature">
-                                    30 °C
-                                </strong>
-                            </div>
+                                    <span class="day-item__name">
+                                        Tue
+                                    </span>
 
-                            <div class="day-item">
-                                <i class="ic-cloud-sun day-item__icon"></i>
+                                    <strong class="day-item__temperature">
+                                        30 °C
+                                    </strong>
+                                </div>
 
-                                <span class="day-item__name">
-                                    Wed
-                                </span>
+                                <div class="day-item">
+                                    <i class="ic-cloud-sun day-item__icon"></i>
 
-                                <strong class="day-item__temperature">
-                                    22 °C
-                                </strong>
-                            </div>
+                                    <span class="day-item__name">
+                                        Wed
+                                    </span>
 
-                            <div class="day-item">
-                                <i class="ic-cloud-rain day-item__icon"></i>
+                                    <strong class="day-item__temperature">
+                                        22 °C
+                                    </strong>
+                                </div>
 
-                                <span class="day-item__name">
-                                    Thu
-                                </span>
+                                <div class="day-item">
+                                    <i class="ic-cloud-rain day-item__icon"></i>
 
-                                <strong class="day-item__temperature">
-                                    06 °C
-                                </strong>
-                            </div>
+                                    <span class="day-item__name">
+                                        Thu
+                                    </span>
 
-                            <div class="day-item">
-                                <i class="ic-sun day-item__icon"></i>
+                                    <strong class="day-item__temperature">
+                                        06 °C
+                                    </strong>
+                                </div>
 
-                                <span class="day-item__name">
-                                    Fry
-                                </span>
+                                <div class="day-item">
+                                    <i class="ic-sun day-item__icon"></i>
 
-                                <strong class="day-item__temperature">
-                                    26 °C
-                                </strong>
+                                    <span class="day-item__name">
+                                        Fry
+                                    </span>
+
+                                    <strong class="day-item__temperature">
+                                        26 °C
+                                    </strong>
+                                </div>
+
                             </div>
 
                         </div>
@@ -155,7 +173,7 @@
                         <footer class="details-weather__footer">
                             <div class="details-weather__footer-wrapper">
                                 <button class="ic-address details-weather__change-btn" data-role="change-btn">
-                                    Change Location
+                                    Сменить локацию
                                 </button>
 
                                 <div class="details-weather__input input">

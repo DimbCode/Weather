@@ -8,7 +8,7 @@ import { Days } from "./Days.js";
 
 export class CurrentInfo {
 
-    constructor ({elements, cityLat, cityLon}) {
+    constructor ({ elements, cityLat, cityLon, openClass }) {
 
         // Independent Objects
 
@@ -39,9 +39,11 @@ export class CurrentInfo {
         this._city;
         this._currentDate = new Date();
         this._isReady = true;
+        this._openClass = openClass;
 
         // Class Elements
 
+        this._container = document.querySelector(elements.container);
         this._dayElement = elements.day;
         this._dateElement = elements.date;
         this._placeElement = elements.place;
@@ -51,10 +53,13 @@ export class CurrentInfo {
         this._precipitationElement = elements.precipitation;
         this._humidityElement = elements.humidity;
         this._windElement = elements.wind;
+        this._openBtn = this._container.querySelector("*[data-role=open-btn]");
+        this._skipBtn = this._container.querySelector("*[data-role=skip-btn]");
+        this._loadings = this._container.querySelectorAll("*[data-role=loading]");
 
         // Start Settings
 
-        // this.setCity();
+        this.addEvents();
 
     }
 
@@ -101,11 +106,15 @@ export class CurrentInfo {
     }
 
     async setElementsValues() {
+
+        // Loading Start
+
         this._isReady = false;
+        this.loadingStart();
 
         await this._weather.setDataCurrent();
 
-        const formatedDate = `${this._currentDate.getDate()} ${this.getDay(this._currentDate)} ${this._currentDate.getFullYear()}`;
+        const formatedDate = `${this._currentDate.getDate()} ${this.getMonth(this._currentDate)} ${this._currentDate.getFullYear()}`;
         const iconClasses = `current-weather__icon ${await this._weather.getCurrentWeatherIcon()}`;
 
         this.elementOutput(this._dayElement, this.getDay(this._currentDate));
@@ -123,6 +132,9 @@ export class CurrentInfo {
         
         await this._days.output();
 
+        // Loading End
+
+        this.loadingEnd();
         this._isReady = true;
         
     }
@@ -140,31 +152,31 @@ export class CurrentInfo {
         switch (trueDate) {
 
             case 1:
-                textDate = "Monday";
+                textDate = "Понедельник";
                 break;
 
                 case 2:
-                textDate = "Tuesday";
+                textDate = "Вторник";
                 break;
 
                 case 3:
-                textDate = "Wednesday";
+                textDate = "Среда";
                 break;
 
                 case 4:
-                textDate = "Thursday";
+                textDate = "Четверг";
                 break;
 
                 case 5:
-                textDate = "Friday";
+                textDate = "Пятница";
                 break;
 
                 case 6:
-                textDate = "Saturday";
+                textDate = "Суббота";
                 break;
 
                 case 0:
-                textDate = "Sunday";
+                textDate = "Воскресенье";
                 break;
 
         }
@@ -179,56 +191,88 @@ export class CurrentInfo {
         switch (monthNum) {
 
             case 0:
-                resultMonth = "January";
+                resultMonth = "Январь";
                 break;
 
                 case 1:
-                resultMonth = "February";
+                resultMonth = "Февраль";
                 break;
 
                 case 2:
-                resultMonth = "March";
+                resultMonth = "Март";
                 break;
 
                 case 3:
-                resultMonth = "April";
+                resultMonth = "Апрель";
                 break;
 
                 case 4:
-                resultMonth = "May";
+                resultMonth = "Май";
                 break;
 
                 case 5:
-                resultMonth = "June";
+                resultMonth = "Июнь";
                 break;
 
                 case 6:
-                resultMonth = "July";
+                resultMonth = "Июль";
                 break;
 
                 case 7:
-                resultMonth = "August";
+                resultMonth = "Август";
                 break;
 
                 case 8:
-                resultMonth = "September";
+                resultMonth = "Сентябрь";
                 break;
 
                 case 9:
-                resultMonth = "October";
+                resultMonth = "Октябрь";
                 break;
 
                 case 10:
-                resultMonth = "November";
+                resultMonth = "Ноябрь";
                 break;
 
                 case 11:
-                resultMonth = "December";
+                resultMonth = "Декабрь";
                 break;
 
         }
 
         return resultMonth;
+    }
+
+    // Events Methods
+
+    loadingStart() {
+        this._loadings.forEach(loader => {
+            loader.classList.remove("loading_hidden");
+        });
+    }
+
+    loadingEnd() {
+        this._loadings.forEach(loader => {
+            loader.classList.add("loading_hidden");
+        });
+    }
+
+    openSearch() {
+        this._container.classList.add(this._openClass);
+    }
+
+    hiddenSearch() {
+        this._container.classList.remove(this._openClass);
+    }
+
+    addEvents() {
+        this._openBtn.addEventListener("click", () => {
+            this.openSearch();
+        });
+
+        this._skipBtn.addEventListener("click", () => {
+            this.hiddenSearch();
+        });
     }
 
 }
