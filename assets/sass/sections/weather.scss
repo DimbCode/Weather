@@ -299,18 +299,19 @@
         &__details {
             position: absolute;
             max-height: 80svh;
+            height: 80svh;
             max-width: 30rem;
             width: calc(100% - 2rem);
             transition: .5s;
         }
 
         &__current {
-            transform-origin: 50% 50% 31svh;
+            transform-origin: 50% 50% 25.5svh;
             transform: rotateY(0);
         }
 
         &__details {
-            transform-origin: 50% 50% 31svh;
+            transform-origin: 50% 50% 25.5svh;
             transform: rotateY(-90deg);
         }
 
@@ -356,6 +357,7 @@
         &__current,
         &__details {
             max-height: 75svh;
+            height: 75svh;
         }
 
         &__current {
