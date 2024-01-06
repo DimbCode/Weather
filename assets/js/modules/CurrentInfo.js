@@ -18,7 +18,7 @@ export class CurrentInfo {
             lon: cityLon,
         });
         this._cityTranslate = new CityTranslate({
-            url: "http://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address",
+            url: "https://suggestions.dadata.ru/suggestions/api/4_1/rs/geolocate/address",
             apiKey: "50f2f086aed4a5659d0662d14e91cff50810be20",
         });
 
